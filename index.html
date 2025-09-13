@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VS Code Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="icon"
+      href="https://code.visualstudio.com/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              vscode: {
+                dark: "#1e1e1e",
+                sidebar: "#333333",
+                active: "#37373d",
+                hover: "#2a2d2e",
+                border: "#3c3c3c",
+                tab: "#252526",
+                editor: "#1e1e1e",
+                status: "#007acc",
+                text: "#cccccc",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-vscode-dark text-vscode-text font-mono overflow-hidden">
+    <div class="flex flex-col h-screen">
+      <!-- Title Bar -->
+      <div
+        class="bg-vscode-tab h-8 flex items-center justify-between pr-[1rem] border-b border-vscode-border"
+      >
+        <div class="flex items-center space-x-4">
+          <div class="flex space-x-2 w-10 h-10">
+            <img src="vscode.png" alt="" />
+          </div>
+          <div class="flex space-x-4 text-sm">
+            <span class="hover:bg-gray-600 rounded-sm">File</span>
+            <span class="hover:bg-gray-600 rounded-sm">Edit</span>
+            <span class="hover:bg-gray-600 rounded-sm">Selection</span>
+            <span class="hover:bg-gray-600 rounded-sm">View</span>
+            <span class="hover:bg-gray-600 rounded-sm">Go</span>
+            <span class="hover:bg-gray-600 rounded-sm">Run</span>
+            <span class="hover:bg-gray-600 rounded-sm">Terminal</span>
+            <span class="hover:bg-gray-600 rounded-sm">Help</span>
+          </div>
+          <div class="flex space-x-3 text-sm ml-4">
+            <i
+              class="fas fa-arrow-left text-gray-400 hover:bg-gray-600 rounded-sm"
+            ></i>
+            <i
+              class="fas fa-arrow-right text-gray-500 hover:bg-gray-600 rounded-sm"
+            ></i>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-xl">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Search (Ctrl+F)"
+              class="w-full pl-8 pr-4 rounded-md border border-vscode-border bg-vscode-hover focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent text-sm text-gray-300 shadow-none"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-2 top-1.5 text-gray-500 text-xs"
+            ></i>
+          </div>
+          <div
+            class="flex items-center space-x-1 absolute top-1.5 ml-[37rem] cursor-pointer hover:bg-gray-700 rounded mb-4"
+          >
+            <!-- Copilot logo -->
+            <img
+              src="github-copilot-logo-png_seeklogo-428029.png"
+              alt="Copilot"
+              class="w-6 h-6 opacity-80 invert"
+            />
+
+            <!-- Dropdown arrow -->
+            <i class="fas fa-angle-down text-gray-400"></i>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-3 text-gray-400">
+          <!-- Minimize -->
+          <div
+            class="flex items-center justify-center h-6 w-6 hover:bg-gray-600"
+          >
+            <i class="fas fa-minus"></i>
+          </div>
+
+          <!-- Restore/Maximize -->
+          <div
+            class="flex items-center justify-center h-6 w-6 hover:bg-gray-600"
+          >
+            <i class="fas fa-window-restore"></i>
+          </div>
+
+          <!-- Close -->
+          <div
+            class="flex items-center justify-center h-6 w-6 hover:bg-red-500"
+          >
+            <i class="fas fa-xmark"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex flex-1 overflow-hidden">
+        <!-- Activity Bar -->
+        <div
+          class="bg-[#333333] w-15 flex flex-col items-center space-y-1 hover:text-white cursor-pointer"
+        >
+          <div class="p-3 rounded">
+            <i class="fa-solid fa-search"></i>
+          </div>
+          <div class="p-3 rounded">
+            <i class="fa-solid fa-code-branch"></i>
+          </div>
+          <div class="p-3 rounded">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <div class="p-3 rounded">
+            <i class="fa-solid fa-puzzle-piece"></i>
+          </div>
+          <div class="p-3 bg-vscode-active">
+            <i
+              class="fas fa-copy text-gray-400 hover:text-white cursor-pointer"
+            ></i>
+          </div>
+          <div class="h-[50rem]"></div>
+          <div class="p-3 rounded mt-auto">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="p-3 rounded">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div
+          class="w-60 flex flex-col border-r border-vscode-border bg-[#252526] text-sm uppercase"
+        >
+          <div
+            class="p-3 flex justify-between items-center border-b border-vscode-border cursor-pointer"
+          >
+            <span>Explorer</span>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+          <div class="flex-1 overflow-y-auto">
+            <div
+              class="p-2 hover:bg-vscode-hover flex items-center text-sm font-bold"
+            >
+              <i class="fa-solid fa-chevron-down mr-1 text-xs"></i>
+              <span>VS-CODE-CLONE</span>
+            </div>
+            <div class="ml-4 cursor-pointer">
+              <div class="p-2 hover:bg-vscode-hover flex items-center">
+                <i class="fa-brands fa-html5 mr-2 text-orange-500"></i>
+                <span>index.html</span>
+              </div>
+              <div class="p-2 hover:bg-vscode-hover flex items-center">
+                <i class="fa-brands fa-css3-alt mr-2 text-blue-500"></i>
+                <span>styles.css</span>
+              </div>
+              <div class="p-2 hover:bg-vscode-hover flex items-center">
+                <i class="fa-brands fa-js mr-2 text-yellow-500"></i>
+                <span>script.js</span>
+              </div>
+              <div class="p-2 hover:bg-vscode-hover flex items-center">
+                <i class="fa-solid fa-image mr-2 text-purple-500"></i>
+                <span>logo.png</span>
+              </div>
+            </div>
+            <div
+              class="p-2 hover:bg-vscode-hover flex items-center mt-2 cursor-pointer text-sm font-bold"
+            >
+              <i class="fa-solid fa-chevron-right mr-1 text-xs"></i>
+              <i class="fa-solid fa-folder mr-2 text-[#90caf9]"></i>
+              <span>node_modules</span>
+            </div>
+            <div
+              class="p-2 hover:bg-vscode-hover flex items-center cursor-pointer text-sm font-bold"
+            >
+              <i class="fa-solid fa-chevron-right mr-1 text-xs"></i>
+              <i class="fa-solid fa-folder mr-2 text-[#90caf9]"></i>
+              <span>public</span>
+            </div>
+          </div>
+          <div class="h-45/100"></div>
+          <hr class="border-vscode-border" />
+          <div class="p-1 cursor-pointer">
+            <i class="fa-solid fa-chevron-right mr-1 text-xs"></i>Outline
+          </div>
+          <hr class="border-vscode-border" />
+          <div class="p-1 cursor-pointer">
+            <i class="fa-solid fa-chevron-right mr-1 text-xs"></i>Timeline
+          </div>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="flex-1 flex flex-col">
+          <!-- Tabs -->
+          <div class="bg-vscode-tab flex border-vscode-border">
+            <div
+              class="px-4 py-2 bg-vscode-dark border-vscode-border flex items-center"
+            >
+              <i class="fa-brands fa-html5 mr-2 text-orange-500"></i>
+              <span>index.html</span>
+              <i
+                class="fa-solid fa-xmark ml-2 opacity-60 hover:opacity-100"
+              ></i>
+            </div>
+            <div
+              class="px-4 py-2 border-r border-vscode-border flex items-center opacity-60 hover:opacity-100"
+            >
+              <i class="fa-brands fa-css3-alt mr-2 text-blue-500"></i>
+              <span>styles.css</span>
+              <i class="fa-solid fa-xmark ml-2 opacity-0 hover:opacity-100"></i>
+            </div>
+            <div
+              class="px-4 py-2 border-r border-vscode-border flex items-center opacity-60 hover:opacity-100"
+            >
+              <i class="fa-brands fa-js mr-2 text-yellow-500"></i>
+              <span>script.js</span>
+              <i class="fa-solid fa-xmark ml-2 opacity-0 hover:opacity-100"></i>
+            </div>
+            <div class="flex-1 border-b border-vscode-border"></div>
+          </div>
+
+          <!-- Editor Content -->
+          <div class="flex-1 bg-vscode-editor overflow-auto p-4">
+            <div class="flex">
+              <!-- Line Numbers -->
+              <div class="text-right pr-4 select-none text-gray-500">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>10</div>
+                <div>11</div>
+                <div>12</div>
+                <div>13</div>
+                <div>14</div>
+                <div>15</div>
+                <div>16</div>
+                <div>17</div>
+                <div>18</div>
+                <div>19</div>
+                <div>20</div>
+              </div>
+
+              <!-- Editable Code Area -->
+              <pre
+                contenteditable="true"
+                spellcheck="false"
+                class="flex-1 text-white outline-none"
+              >
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;VS Code Clone&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Hello VS Code!&lt;/h1&gt;
+    &lt;p&gt;This is a VS Code clone made with HTML and Tailwind CSS.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="bg-vscode-status h-6 flex items-center justify-between px-3 text-xs"
+      >
+        <div class="flex items-center space-x-4">
+          <div class="bg-green-500">
+            <i class="fa-solid fa-link-slash"></i>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-code-branch mr-1"></i>
+            <span>master<sup>*</sup></span>
+            <i class="fas fa-retweet"></i>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-circle-check mr-1"></i>
+            <span>0 problems</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4 text-white">
+          <div class="flex items-center">
+            <span>Spaces:4</span>
+          </div>
+          <div class="flex items-center">
+            <span>UTF-8</span>
+          </div>
+          <div class="flex items-center">
+            <span>CRLF</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-brands fa-html5 mr-1"></i>
+            <span>HTML</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fas fa-ban"></i>
+            <span>PORT-5500</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fas fa-check gap- 1"></i>
+            <span>Terminal</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-regular fa-bell"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
